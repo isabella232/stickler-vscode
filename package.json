@@ -12,10 +12,23 @@
   ],
   "activationEvents": [
     "onCommand:extension.sayHello",
+    "workspaceContains:stickler.config.js",
     "onLanguage:javascript"
   ],
   "main": "./out/extension",
   "contributes": {
+    "configuration": {
+      "type": "object",
+      "title": "Example configuration",
+      "properties": {
+        "languageServerExample.maxNumberOfProblems": {
+          "scope": "resource",
+          "type": "number",
+          "default": 100,
+          "description": "Controls the maximum number of problems produced by the server."
+        }
+      }
+    },
     "languages": [
       {
         "id": "javascript",
@@ -47,5 +60,10 @@
     "tslint": "^5.8.0",
     "@types/node": "^7.0.43",
     "@types/mocha": "^2.2.42"
+  },
+  "dependencies": {
+    "@mapbox/stickler": "^0.4.0",
+    "vscode-languageclient": "^4.4.0",
+    "vscode-languageserver": "^4.4.0"
   }
 }
